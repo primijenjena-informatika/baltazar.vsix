@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const vscode = acquireVsCodeApi();
     const textarea = document.querySelector('#ddbInput textarea');
     const chatText = document.querySelector('#ddbChatText');
-    const disclaimer = "Quack. I am CS50's duck debugger (ddb), an experimental AI for [rubberducking](https://en.wikipedia.org/wiki/Rubber_duck_debugging). Quack quack. My replies might not always be accurate, so always think critically and let me know if you think that I've erred. Conversations are logged for debugging's sake. Quack quack quack.";
+    const disclaimer = "Quack. I am CS50's duck debugger (ddb), an experimental AI for [rubberducking](https://en.wikipedia.org/wiki/Rubber_duck_debugging). Quack quack. My replies might not always be accurate, so always think critically and let me know if you think that I've erred. Conversations are logged. Quack quack quack.";
 
     // Set intial value for ddb's energy (1 energy point == 1 half heart)
     const INITIAL_DDB_ENERGY = 10;
