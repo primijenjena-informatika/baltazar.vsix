@@ -97,12 +97,22 @@ export function activate(context: vscode.ExtensionContext) {
       })
     );
 
-    // Command: Clear Messages in the ddb50 chat window
+    // Command: Clear Messages in the ddb50 chat window with confirmation
     context.subscriptions.push(
-        vscode.commands.registerCommand('ddb50.resetHistory', () => {
-            provider.webViewGlobal?.webview.postMessage({ command: 'resetHistory' });
-            gpt_messages_array = [];
-        })
+      vscode.commands.registerCommand('ddb50.resetHistory', async () => {
+          const result = await vscode.window.showWarningMessage(
+              "Are you sure you want to clear the chat history? This action cannot be undone.",
+              { modal: true },
+              "No, keep history",
+              "Yes, clear history",
+          );
+
+          if (result === "Yes, clear history") {
+              provider.webViewGlobal?.webview.postMessage({ command: 'resetHistory' });
+              gpt_messages_array = [];
+              vscode.window.showInformationMessage("Chat history cleared.");
+          }
+      })
     );
 
     // Help50 commands
