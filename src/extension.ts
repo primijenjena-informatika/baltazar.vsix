@@ -64,6 +64,39 @@ export function activate(context: vscode.ExtensionContext) {
         })
     );
 
+    // Command: Download the chat history
+    context.subscriptions.push(
+      vscode.commands.registerCommand("ddb50.downloadChatHistory", async () => {
+        const chatHistory = gpt_messages_array
+          .map((message: any) => {
+            return `${message.role}: ${message.content}\n`;
+          })
+          .join("\n");
+
+        // Show a "Save As" dialog
+        const uri = await vscode.window.showSaveDialog({
+          saveLabel: "Save Chat History",
+          filters: { "Text Files": ["txt"] },
+          defaultUri: vscode.Uri.file(
+            `${vscode.workspace.workspaceFolders?.[0]?.uri.fsPath}/ddb50_chat_history_${Date.now()}.txt`
+          ),
+        });
+
+        if (uri) {
+          // Write the chat history to the selected file
+          await vscode.workspace.fs.writeFile(
+            uri,
+            Buffer.from(chatHistory, "utf8")
+          );
+          vscode.window.showInformationMessage(
+            "Chat history saved successfully!"
+          );
+        } else {
+          vscode.window.showWarningMessage("Save operation was canceled.");
+        }
+      })
+    );
+
     // Command: Clear Messages in the ddb50 chat window
     context.subscriptions.push(
         vscode.commands.registerCommand('ddb50.resetHistory', () => {

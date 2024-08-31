@@ -19,6 +19,11 @@
     "contributes": {
         "commands": [
             {
+                "command": "ddb50.downloadChatHistory",
+                "title": "Download Chat History",
+                "icon": "$(cloud-download)"
+            },
+            {
                 "command": "ddb50.resetHistory",
                 "title": "Clear Messages",
                 "icon": "$(extensions-refresh)"
@@ -75,6 +80,11 @@
         },
         "menus": {
             "view/title": [
+                {
+                    "command": "ddb50.downloadChatHistory",
+                    "group": "navigation",
+                    "when": "view == ddb50.chatWindow"
+                },
                 {
                     "command": "ddb50.resetHistory",
                     "group": "navigation",
