@@ -1,133 +1,133 @@
 {
-    "name": "ddb50",
-    "displayName": "CS50 Duck",
-    "description": "Provide everyone with their own virtual duck in VS Code. Introduce students to rubber duck debugging, a technique that involves talking to a rubber duck (or any inanimate, or even animate object) about a bug in their code. Now, with the power of OpenAI's ChatGPT, your rubber duck can talk back!",
-    "icon": "images/ddb50.png",
-    "version": "2.0.0",
-    "publisher": "CS50",
-    "repository": "https://github.com/cs50/ddb50.vsix",
-    "engines": {
-        "vscode": "^1.85.0"
-    },
-    "categories": [
-        "Education"
+  "name": "baltazar",
+  "displayName": "Baltazar",
+  "description": "Provide everyone with their own virtual duck in VS Code. Introduce students to rubber duck debugging, a technique that involves talking to a rubber duck (or any inanimate, or even animate object) about a bug in their code. Now, with the power of OpenAI's ChatGPT, your rubber duck can talk back!",
+  "icon": "images/ddb50.png",
+  "version": "0.0.1",
+  "publisher": "primijenjena-informatika",
+  "repository": "https://github.com/primijenjena-informatika/baltazar.vsix",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Education"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ddb50.downloadChatHistory",
+        "title": "Download Chat History",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "ddb50.resetHistory",
+        "title": "Clear Messages",
+        "icon": "$(extensions-refresh)"
+      },
+      {
+        "command": "ddb50.help50.say",
+        "title": "Display help50 Message"
+      },
+      {
+        "command": "ddb50.help50.say.click",
+        "title": "help50"
+      },
+      {
+        "command": "ddb50.help50.ask",
+        "title": "Get help50 Response"
+      },
+      {
+        "command": "ddb50.help50.ask.click",
+        "title": "help50"
+      },
+      {
+        "command": "ddb50.help50.dismiss",
+        "title": "Dismiss help50"
+      }
     ],
-    "activationEvents": [
-        "onStartupFinished"
-    ],
-    "main": "./out/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "ddb50.downloadChatHistory",
-                "title": "Download Chat History",
-                "icon": "$(cloud-download)"
-            },
-            {
-                "command": "ddb50.resetHistory",
-                "title": "Clear Messages",
-                "icon": "$(extensions-refresh)"
-            },
-            {
-                "command": "ddb50.help50.say",
-                "title": "Display help50 Message"
-            },
-            {
-                "command": "ddb50.help50.say.click",
-                "title": "help50"
-            },
-            {
-                "command": "ddb50.help50.ask",
-                "title": "Get help50 Response"
-            },
-            {
-                "command": "ddb50.help50.ask.click",
-                "title": "help50"
-            },
-            {
-                "command": "ddb50.help50.dismiss",
-                "title": "Dismiss help50"
-            }
-        ],
-        "configuration": [
-            {
-                "title": "Config Override",
-                "properties": {
-                    "ddb50.config": {
-                        "type": "string",
-                        "description": "Override default prompts configuration."
-                    }
-                }
-            }
-        ],
-        "views": {
-            "ddb50": [
-                {
-                    "id": "ddb50.chatWindow",
-                    "name": "CS50 Duck Debugger",
-                    "type": "webview"
-                }
-            ]
-        },
-        "viewsContainers": {
-            "activitybar": [
-                {
-                    "id": "ddb50",
-                    "title": "CS50 Duck Debugger",
-                    "icon": "resources/ddb.svg"
-                }
-            ]
-        },
-        "menus": {
-            "view/title": [
-                {
-                    "command": "ddb50.downloadChatHistory",
-                    "group": "navigation",
-                    "when": "view == ddb50.chatWindow"
-                },
-                {
-                    "command": "ddb50.resetHistory",
-                    "group": "navigation",
-                    "when": "view == ddb50.chatWindow"
-                },
-                {
-                    "command": "ddb50.help50.say.click",
-                    "group": "navigation@-1",
-                    "when": "view == terminal && ddb50:help50say"
-                },
-                {
-                    "command": "ddb50.help50.ask.click",
-                    "group": "navigation@-1",
-                    "when": "view == terminal && ddb50:help50ask"
-                }
-            ]
+    "configuration": [
+      {
+        "title": "Config Override",
+        "properties": {
+          "ddb50.config": {
+            "type": "string",
+            "description": "Override default prompts configuration."
+          }
         }
+      }
+    ],
+    "views": {
+      "ddb50": [
+        {
+          "id": "ddb50.chatWindow",
+          "name": "CS50 Duck Debugger",
+          "type": "webview"
+        }
+      ]
     },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "pretest": "npm run compile && npm run lint",
-        "lint": "eslint src --ext ts",
-        "test": "node ./out/test/runTest.js"
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ddb50",
+          "title": "Baltazar",
+          "icon": "resources/ddb.svg"
+        }
+      ]
     },
-    "devDependencies": {
-        "@types/glob": "^8.1.0",
-        "@types/mocha": "^10.0.6",
-        "@types/node": "20.x",
-        "@types/vscode": "^1.85.0",
-        "@typescript-eslint/eslint-plugin": "^6.21.0",
-        "@typescript-eslint/parser": "^6.21.0",
-        "eslint": "^8.56.0",
-        "glob": "^10.3.10",
-        "mocha": "^10.3.0",
-        "typescript": "^5.3.3",
-        "vscode-test": "^1.5.2"
-    },
-    "dependencies": {
-        "axios": "^1.6.7",
-        "markdown-it": "^14.0.0",
-        "markdown-it-highlightjs": "^4.0.1",
-        "uuid": "^9.0.1"
+    "menus": {
+      "view/title": [
+        {
+          "command": "ddb50.downloadChatHistory",
+          "group": "navigation",
+          "when": "view == ddb50.chatWindow"
+        },
+        {
+          "command": "ddb50.resetHistory",
+          "group": "navigation",
+          "when": "view == ddb50.chatWindow"
+        },
+        {
+          "command": "ddb50.help50.say.click",
+          "group": "navigation@-1",
+          "when": "view == terminal && ddb50:help50say"
+        },
+        {
+          "command": "ddb50.help50.ask.click",
+          "group": "navigation@-1",
+          "when": "view == terminal && ddb50:help50ask"
+        }
+      ]
     }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.3.0",
+    "typescript": "^5.3.3",
+    "vscode-test": "^1.5.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.7",
+    "markdown-it": "^14.0.0",
+    "markdown-it-highlightjs": "^4.0.1",
+    "uuid": "^9.0.1"
+  }
 }
